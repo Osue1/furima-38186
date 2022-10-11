@@ -1,0 +1,61 @@
+<mxfile host="65bd71144e">
+    <diagram id="8COyrFWTjCHbuhWcs4dc" name="ページ1">
+        <mxGraphModel dx="870" dy="656" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="29" style="edgeStyle=none;html=1;exitX=1.004;exitY=0.311;exitDx=0;exitDy=0;endArrow=ERmany;endFill=0;endSize=30;startArrow=ERone;startFill=0;targetPerimeterSpacing=0;sourcePerimeterSpacing=0;startSize=30;entryX=-0.009;entryY=0.243;entryDx=0;entryDy=0;entryPerimeter=0;exitPerimeter=0;spacing=0;" edge="1" parent="1" source="5" target="7">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="590" y="100" as="targetPoint"/>
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="2" value="users" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                    <mxGeometry x="10" width="260" height="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="・email&#10;&#10;・nickname&#10;&#10;・password&#10;&#10;・last_name&#10;&#10;・first_name&#10;&#10;・last_name_reading&#10;&#10;・first_name_reading&#10;&#10;・birthday" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="2">
+                    <mxGeometry y="30" width="260" height="230" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="products" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                    <mxGeometry x="600" width="220" height="323" as="geometry">
+                        <mxRectangle x="580" y="40" width="80" height="30" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="7" value="・name&#10;&#10;・explanation&#10;&#10;・category_id&#10;&#10;・status_id&#10;&#10;・postage_id&#10;&#10;・prefecture_id&#10;&#10;・days_to_ship_id&#10;&#10;・price&#10;&#10;・user_id" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="6">
+                    <mxGeometry y="30" width="220" height="293" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="shipping_addresses" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                    <mxGeometry x="470" y="360" width="250" height="254" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="・post_code&#10;&#10;・prefecture_id&#10;&#10;・city&#10;&#10;・address&#10;&#10;・building&#10;&#10;・post_code&#10;&#10;・phone_number&#10;&#10;・purchase_record_id" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;" vertex="1" parent="20">
+                    <mxGeometry y="30" width="250" height="224" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" style="edgeStyle=none;html=1;startArrow=ERone;startFill=0;endArrow=ERone;endFill=0;startSize=30;endSize=30;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="38">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="470" y="440" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="34" style="edgeStyle=none;html=1;startArrow=ERone;startFill=0;endArrow=ERone;endFill=0;startSize=30;endSize=30;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;exitX=-0.005;exitY=0.726;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.921;entryY=0.01;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="7" target="37">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="300" y="374" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="300" y="240"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="37" value="purchase_records" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=0;" vertex="1" parent="1">
+                    <mxGeometry x="103" y="377" width="215" height="96" as="geometry"/>
+                </mxCell>
+                <mxCell id="38" value="・user_id&#10;&#10;・productt_id" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;html=0;" vertex="1" parent="37">
+                    <mxGeometry y="30" width="215" height="66" as="geometry"/>
+                </mxCell>
+                <mxCell id="41" value="" style="edgeStyle=none;html=1;startArrow=ERone;startFill=0;endArrow=ERmany;endFill=0;startSize=30;endSize=30;sourcePerimeterSpacing=0;" edge="1" parent="1" source="5">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="141.0043668122271" y="260" as="sourcePoint"/>
+                        <mxPoint x="140" y="377" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
