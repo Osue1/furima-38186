@@ -35,7 +35,7 @@ Things you may want to cover:
 | first_name              | string      | null: false               |
 | last_name_reading       | string      | null: false               |
 | first_name_reading      | string      | null: false               |
-| birthday                | integer     | null: false               |
+| birthday                | date        | null: false               |
 
 ### Association
   has_many :products
@@ -44,18 +44,17 @@ Things you may want to cover:
 
 # productsテーブル
 
-| Column          | Type         | Options                   |
-|-----------------|--------------|---------------------------|
-| image           | blob         | null: false               |
-| name            | string       | null: false               |
-| text            | string       | null: false               |
-| category        | string       | null: false               |
-| status          | string       | null: false               |
-| postage         | integer      | null: false               |
-| sender_address  | string       | null: false               |
-| days_to_ship    | integer      | null: false               |
-| price           | integer      | null: false               |
-| user            | references   | null: false, foreign_key  |
+| Column             | Type         | Options                         |
+|--------------------|--------------|---------------------------------|
+| name               | string       | null: false                     |
+| explanation        | text         | null: false                     |
+| category_id        | integer      | null: false                     |
+| status_id          | integer      | null: false                     |
+| postage_id         | integer      | null: false                     |
+| prefecture_id      | integer      | null: false                     |
+| days_to_ship_id    | integer      | null: false                     |
+| price              | integer      | null: false                     |
+| user               | references   | null: false, foreign_key: true  |
 
 ### Association
   belongs_to :user
@@ -64,11 +63,10 @@ Things you may want to cover:
 
 # purchase_recordsテーブル
 
-| Column              | Type        | Options                   |
-|---------------------|-------------|---------------------------|
-| user                | references  | null: false, foreign_key  |
-| product             | references  | null: false, foreign_key  |
-| shipping_addresses  | references  | null: false, foreign_key  |
+| Column              | Type        | Options                         |
+|---------------------|-------------|---------------------------------|
+| user                | references  | null: false, foreign_key: true  |
+| product             | references  | null: false, foreign_key: true  |
 
 ### Association
   belongs_to :user
@@ -78,14 +76,15 @@ Things you may want to cover:
 
 # shipping_addressesテーブル
 
-|Column         | Type    | Options     |
-|---------------|---------|-------------|
-| post_code     | string  |null: false  |
-| prefectures   | string  |null: false  |
-| city          | string  |null: false  |
-| address       | string  |null: false  |
-| building      | string  |             |
-| phone_number  | string  |null: false  |
+| Column          | Type        | Options                         |
+|-----------------|-------------|---------------------------------|
+| post_code       | string      | null: false                     |
+| prefecture_id   | integer     | null: false                     |
+| city            | string      | null: false                     |
+| address         | string      | null: false                     |
+| building        | string      |                                 |
+| phone_number    | string      | null: false                     |
+| purchase_record | references  | null: false, foreign_key: true  |
 
 ### Association
   belongs_to :purchase_record
