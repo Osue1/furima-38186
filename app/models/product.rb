@@ -10,4 +10,5 @@ class Product < ApplicationRecord
   validates :user, presence: true, foreign_key: true
 
   belongs_to :user
+  has_one_attached :image
 end
