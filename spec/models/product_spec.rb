@@ -25,7 +25,7 @@ RSpec.describe Product, type: :model do
       it 'nameが41文字以上では出品できない' do
         @product.name = Faker::Name.initials(number: 41)
         @product.valid?
-        expect(@product.errors.full_messages).to include("Name is too long (maximum is 40 characters)")
+        expect(@product.errors.full_messages).to include('Name is too long (maximum is 40 characters)')
       end
       it 'explanationが存在していないと出品できない' do
         @product.explanation = ''
@@ -35,7 +35,7 @@ RSpec.describe Product, type: :model do
       it 'explanationが1001文字以上では出品できない' do
         @product.explanation = Faker::Lorem.sentence(word_count: 1001)
         @product.valid?
-        expect(@product.errors.full_messages).to include("Explanation is too long (maximum is 1000 characters)")
+        expect(@product.errors.full_messages).to include('Explanation is too long (maximum is 1000 characters)')
       end
       it 'categoryが紐付いていないと出品できない' do
         @product.category_id = nil
@@ -90,7 +90,7 @@ RSpec.describe Product, type: :model do
       it 'userがが紐付いていないと出品できない' do
         @product.user = nil
         @product.valid?
-        expect(@product.errors.full_messages).to include("User must exist")
+        expect(@product.errors.full_messages).to include('User must exist')
       end
       it 'priceが存在していないと出品できない' do
         @product.price = ''
@@ -100,17 +100,17 @@ RSpec.describe Product, type: :model do
       it 'priceが299以下では出品できない' do
         @product.price = 299
         @product.valid?
-        expect(@product.errors.full_messages).to include("Price must be greater than or equal to 300")
+        expect(@product.errors.full_messages).to include('Price must be greater than or equal to 300')
       end
       it 'priceが10000000以上では出品できない' do
-        @product.price = 10000000
+        @product.price = 10_000_000
         @product.valid?
-        expect(@product.errors.full_messages).to include("Price must be less than or equal to 9999999")
+        expect(@product.errors.full_messages).to include('Price must be less than or equal to 9999999')
       end
       it '価格に半角数字以外が含まれている場合は出品できない' do
         @product.price = '５００'
         @product.valid?
-        expect(@product.errors.full_messages).to include("Price is not a number")
+        expect(@product.errors.full_messages).to include('Price is not a number')
       end
     end
   end

@@ -7,8 +7,8 @@ FactoryBot.define do
     postage               { Postage.where(id: 2..3).sample }
     prefecture            { Prefecture.where(id: 2..48).sample }
     days_to_ship          { DaysToShip.where(id: 2..7).sample }
-    price                 { Faker::Number.between(from: 300, to: 9999999) }
-    association :user                  
+    price                 { Faker::Number.between(from: 300, to: 9_999_999) }
+    association :user
 
     after(:build) do |product|
       product.image.attach(io: File.open('public/images/test.png'), filename: 'test.png')

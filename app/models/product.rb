@@ -7,7 +7,8 @@ class Product < ApplicationRecord
   validates :postage_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
   validates :prefecture_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
   validates :days_to_ship_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
-  validates :price, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 300,less_than_or_equal_to: 9999999 }
+  validates :price, presence: true,
+                    numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :user
@@ -17,5 +18,4 @@ class Product < ApplicationRecord
   belongs_to :prefecture
   belongs_to :days_to_ship
   has_one_attached :image
-
 end
