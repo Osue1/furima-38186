@@ -7,13 +7,7 @@ class Product < ApplicationRecord
   validates :postage_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
   validates :prefecture_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
   validates :days_to_ship_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
-  validates :price, presence: true, numericality: { greater_than_or_equal_to: 300,less_than_or_equal_to: 9999999 }
-  validates :user, presence: true
-
-  def price=(value)
-    value.tr!('０-９', '0-9') if value.is_a?(String)
-    super(value)
-  end
+  validates :price, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 300,less_than_or_equal_to: 9999999 }
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :user
