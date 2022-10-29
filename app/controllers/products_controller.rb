@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :move_to_session, except: :index
+  before_action :move_to_session, except: [:index, :show]
 
   def index
     @products = Product.all.order("created_at DESC")
