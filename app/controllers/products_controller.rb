@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :move_to_session, except: [:index, :show]
+  before_action :set_product, only: [:show, :edit, :update]
 
   def index
     @products = Product.all.order('created_at DESC')
@@ -19,10 +20,25 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
+  end
+
+  def edit
+    redirect_to root_path unless current_user.id == @product.user_id
+  end
+
+  def update
+    if @product.update(product_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
   private
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
 
   def product_params
     params.require(:product).permit(:image, :name, :explanation, :category_id, :status_id, :postage_id, :prefecture_id,
