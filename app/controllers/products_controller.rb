@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :move_to_session, except: [:index, :show]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :move_to_top, only: :edit
 
   def index
     @products = Product.all.order('created_at DESC')
@@ -23,7 +24,6 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    redirect_to root_path unless current_user.id == @product.user_id
   end
 
   def update
@@ -54,5 +54,11 @@ class ProductsController < ApplicationController
 
   def move_to_session
     redirect_to new_user_session_path unless user_signed_in?
+  end
+
+  def move_to_top
+    if PurchaseRecord.exists?(product_id: params[:id]) || @product.user_id != current_user.id
+      redirect_to root_path
+    end
   end
 end
