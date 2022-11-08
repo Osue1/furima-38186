@@ -18,7 +18,7 @@ class PurchaseRecordsController < ApplicationController
   end
 
   def record_address_params
-    params.require(:record_address).permit(:post_code, :prefecture_id, :city, :address, :building, :phone_number).merge(user_id: current_user.id, product_id: @product.id)
+    params.require(:record_address).permit(:post_code, :prefecture_id, :city, :address, :building, :phone_number, :card_number, :card_month, :card_year, :card_code).merge(user_id: current_user.id, product_id: @product.id)
   end
 
   private
