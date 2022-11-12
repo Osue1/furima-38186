@@ -7,7 +7,7 @@ function load_window (){
       return str.replace(/[０-９]/g, function(s) {
           return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
       });
-    }
+    };
     const price = numberExchange(priceForm.value);
     const taxForm = document.getElementById("add-tax-price");
     const profitForm = document.getElementById("profit");
