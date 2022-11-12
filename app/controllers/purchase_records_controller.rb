@@ -4,11 +4,11 @@ class PurchaseRecordsController < ApplicationController
   before_action :move_to_session
 
   def index
-    new_record_address
+    @record_address = RecordAddress.new
   end
 
   def create
-    new_record_address(record_address_params)
+    @record_address = RecordAddress.new(record_address_params)
     if @record_address.valid?
       Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
       Payjp::Charge.create(
@@ -27,14 +27,10 @@ class PurchaseRecordsController < ApplicationController
     params.require(:record_address).permit(:post_code, :prefecture_id, :city, :address, :building, :phone_number).merge(user_id: current_user.id, product_id: @product.id, token: params[:token])
   end
 
-  
+
   private
   def set_product
     @product = Product.find(params[:product_id])
-  end
-
-  def new_record_address
-    @record_address = RecordAddress.new
   end
 
   def move_to_top
