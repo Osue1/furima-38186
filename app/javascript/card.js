@@ -1,5 +1,5 @@
 function load_card() {
-  Payjp.setPublicKey('pk_test_838624fbaee32d37696a2535');
+  Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY);
   const submitButton = document.getElementById('button');
   submitButton.addEventListener('click', (e) => {
     e.preventDefault();
