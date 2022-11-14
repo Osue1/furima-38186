@@ -1,7 +1,8 @@
 class PurchaseRecordsController < ApplicationController
+  before_action :move_to_session
   before_action :set_product, onry: [:index, :create]
   before_action :move_to_top, onry: [:index, :create]
-  before_action :move_to_session
+
 
   def index
     @record_address = RecordAddress.new
@@ -41,6 +42,6 @@ class PurchaseRecordsController < ApplicationController
     end	
   end	
   def move_to_session
-    redirect_to new_user_session_path unless user_signed_in?	    redirect_to new_user_session_path unless user_signed_in?
+    redirect_to new_user_session_path unless user_signed_in?
   end	
 end	
