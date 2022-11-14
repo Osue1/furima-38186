@@ -57,8 +57,6 @@ class ProductsController < ApplicationController
   end
 
   def move_to_top
-    if PurchaseRecord.exists?(product_id: params[:id]) || @product.user_id != current_user.id
-      redirect_to root_path
-    end
+    redirect_to root_path if PurchaseRecord.exists?(product_id: params[:id]) || @product.user_id != current_user.id
   end
 end

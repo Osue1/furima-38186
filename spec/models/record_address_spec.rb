@@ -19,19 +19,19 @@ RSpec.describe RecordAddress, type: :model do
         expect(@record_address.errors.full_messages).to include("Post code can't be blank")
       end
       it 'post_codeが半角でハイフンが無いと登録できない' do
-        @record_address.post_code = "1234567"
+        @record_address.post_code = '1234567'
         @record_address.valid?
-        expect(@record_address.errors.full_messages).to include("Post code is invalid")
+        expect(@record_address.errors.full_messages).to include('Post code is invalid')
       end
       it 'post_codeが半角英数字の「4桁-4桁」では登録できない' do
-        @record_address.post_code = "1234-1234"
+        @record_address.post_code = '1234-1234'
         @record_address.valid?
-        expect(@record_address.errors.full_messages).to include("Post code is invalid")
+        expect(@record_address.errors.full_messages).to include('Post code is invalid')
       end
       it 'post_codeが半角英数字の「3桁-3桁」では登録できない' do
-        @record_address.post_code = "123-123"
+        @record_address.post_code = '123-123'
         @record_address.valid?
-        expect(@record_address.errors.full_messages).to include("Post code is invalid")
+        expect(@record_address.errors.full_messages).to include('Post code is invalid')
       end
       it 'prefecture_idが空では登録できない' do
         @record_address.prefecture_id = nil
@@ -39,7 +39,7 @@ RSpec.describe RecordAddress, type: :model do
         expect(@record_address.errors.full_messages).to include("Prefecture can't be blank")
       end
       it 'prefecture_idが「1」では登録できない' do
-        @record_address.prefecture_id = "1"
+        @record_address.prefecture_id = '1'
         @record_address.valid?
         expect(@record_address.errors.full_messages).to include("Prefecture can't be blank")
       end
@@ -59,19 +59,19 @@ RSpec.describe RecordAddress, type: :model do
         expect(@record_address.errors.full_messages).to include("Phone number can't be blank")
       end
       it 'phone_numberが半角英数字12桁以上では登録できない' do
-        @record_address.phone_number = "123456789012"
+        @record_address.phone_number = '123456789012'
         @record_address.valid?
-        expect(@record_address.errors.full_messages).to include("Phone number is invalid")
+        expect(@record_address.errors.full_messages).to include('Phone number is invalid')
       end
       it 'phone_numberが半角英数字9桁以下では登録できない' do
-        @record_address.phone_number = "123456789"
+        @record_address.phone_number = '123456789'
         @record_address.valid?
-        expect(@record_address.errors.full_messages).to include("Phone number is invalid")
+        expect(@record_address.errors.full_messages).to include('Phone number is invalid')
       end
       it 'phone_numberに半角英数字以外が含まれていると登録できない' do
-        @record_address.phone_number = "123-4567-8901"
+        @record_address.phone_number = '123-4567-8901'
         @record_address.valid?
-        expect(@record_address.errors.full_messages).to include("Phone number is invalid")
+        expect(@record_address.errors.full_messages).to include('Phone number is invalid')
       end
       it 'user_idが空では登録できない' do
         @record_address.user_id = nil
