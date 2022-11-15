@@ -15,7 +15,7 @@ RSpec.describe RecordAddress, type: :model do
       end
       it 'buildingが存在しても、post_codeとprefecture_idとcityとaddressとphone_numberとuser_idとproduct_idとtokenがあれば購入できる' do
         @record_address.building = nil
-        expect(@record_address). to be_valid
+        expect(@record_address).to be_valid
       end
     end
 
