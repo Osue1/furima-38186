@@ -2,13 +2,20 @@ require 'rails_helper'
 
 RSpec.describe RecordAddress, type: :model do
   before do
-    @record_address = FactoryBot.build(:record_address)
+    user = FactoryBot.create(:user)
+    product = FactoryBot.create(:product)
+    @record_address = FactoryBot.build(:record_address, user_id: user.id, product_id: product.id)
+    sleep 0.01
   end
 
   describe '購入機能' do
     context '購入できる場合' do
-      it 'post_codeとprefecture_idとcityとaddressとphone_numberとuser_idとproduct_idとtokenがあれば購入できる' do
+      it 'buildingが存在しなくても、post_codeとprefecture_idとcityとaddressとphone_numberとuser_idとproduct_idとtokenがあれば購入できる' do
         expect(@record_address).to be_valid
+      end
+      it 'buildingが存在しても、post_codeとprefecture_idとcityとaddressとphone_numberとuser_idとproduct_idとtokenがあれば購入できる' do
+        @record_address.building = nil
+        expect(@record_address). to be_valid
       end
     end
 
@@ -18,7 +25,7 @@ RSpec.describe RecordAddress, type: :model do
         @record_address.valid?
         expect(@record_address.errors.full_messages).to include("Post code can't be blank")
       end
-      it 'post_codeが半角でハイフンが無いと登録できない' do
+      it 'post_codeが半角でハイフンが含まれないと登録できない' do
         @record_address.post_code = '1234567'
         @record_address.valid?
         expect(@record_address.errors.full_messages).to include('Post code is invalid')
