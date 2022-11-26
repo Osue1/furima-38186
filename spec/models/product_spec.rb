@@ -40,42 +40,42 @@ RSpec.describe Product, type: :model do
       it 'categoryが紐付いていないと出品できない' do
         @product.category_id = nil
         @product.valid?
-        expect(@product.errors.full_messages).to include("Category can't be blank")
+        expect(@product.errors.full_messages).to include("Category を選択してください")
       end
       it 'categoryが「---」(id: 1)以外でないと出品できない' do
         @product.category_id = 1
         @product.valid?
-        expect(@product.errors.full_messages).to include("Category can't be blank")
+        expect(@product.errors.full_messages).to include("Category を選択してください")
       end
       it 'statusが紐付いていないと出品できない' do
         @product.status_id = nil
         @product.valid?
-        expect(@product.errors.full_messages).to include("Status can't be blank")
+        expect(@product.errors.full_messages).to include("Status を選択してください")
       end
       it 'stsatusが「---」(id: 1)以外でないと出品できない' do
         @product.status_id = 1
         @product.valid?
-        expect(@product.errors.full_messages).to include("Status can't be blank")
+        expect(@product.errors.full_messages).to include("Status を選択してください")
       end
       it 'postageが紐付いていないと出品できない' do
         @product.postage_id = nil
         @product.valid?
-        expect(@product.errors.full_messages).to include("Postage can't be blank")
+        expect(@product.errors.full_messages).to include("Postage を選択してください")
       end
       it 'postageが「---」(id: 1)以外でないと出品できない' do
         @product.postage_id = 1
         @product.valid?
-        expect(@product.errors.full_messages).to include("Postage can't be blank")
+        expect(@product.errors.full_messages).to include("Postage を選択してください")
       end
       it 'prefectureが紐付いていないと出品できない' do
         @product.prefecture_id = nil
         @product.valid?
-        expect(@product.errors.full_messages).to include("Prefecture can't be blank")
+        expect(@product.errors.full_messages).to include("Prefecture を選択してください")
       end
       it 'prefectureが「---」(id: 1)以外でないと出品できない' do
         @product.prefecture_id = 1
         @product.valid?
-        expect(@product.errors.full_messages).to include("Prefecture can't be blank")
+        expect(@product.errors.full_messages).to include("Prefecture を選択してください")
       end
       it 'days_to_shipが紐付いていないと出品できない' do
         @product.days_to_ship_id = nil
@@ -85,7 +85,7 @@ RSpec.describe Product, type: :model do
       it 'days_to_shipが「---」(id: 1)以外でないと出品できない' do
         @product.days_to_ship_id = 1
         @product.valid?
-        expect(@product.errors.full_messages).to include("Days to ship can't be blank")
+        expect(@product.errors.full_messages).to include("Days to ship を選択してください")
       end
       it 'userがが紐付いていないと出品できない' do
         @product.user = nil
