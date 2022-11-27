@@ -8,11 +8,11 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @product = Product.new
+    @product_form = ProductForm.new
   end
 
   def create
-    @product = Product.new(product_params)
+    @product = ProductForm.new(product_form_params)
     if @product.save
       redirect_to root_path
     else
@@ -24,10 +24,16 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    product_attributes = @product.attributes
+    @product_form = ProductForm.new(product_attributes)
+    @product_form.tag_name = @product.tags.first&.tag_name
   end
 
   def update
-    if @product.update(product_params)
+    @product_form = ProductForm.new(product_form_params)
+    @product_form.image ||= @product.image.blob
+    if @product_form.valid?
+      @product_form.update(product_form_params, @product)
       redirect_to product_path(params[:id])
     else
       render :edit
@@ -47,9 +53,8 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
-  def product_params
-    params.require(:product).permit(:image, :name, :explanation, :category_id, :status_id, :postage_id, :prefecture_id,
-                                    :days_to_ship_id, :price).merge(user_id: current_user.id)
+  def product_form_params
+    params.require(:product_form).permit(:image, :name, :explanation, :tag_name, :category_id, :status_id, :postage_id, :prefecture_id, :days_to_ship_id, :price).merge(user_id: current_user.id)
   end
 
   def move_to_session
