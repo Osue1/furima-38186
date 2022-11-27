@@ -18,4 +18,6 @@ class Product < ApplicationRecord
   belongs_to :prefecture
   belongs_to :days_to_ship
   has_one_attached :image
+  has_many :product_tag_relations
+  has_many :tags, through: :product_tag_relations
 end
