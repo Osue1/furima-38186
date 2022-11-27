@@ -59,6 +59,8 @@ Things you may want to cover:
 ### Association
   belongs_to :user
   has_one :purchase_record
+  has_many :product_tag_relations
+  has_many :tags, through: :product_tag_relations
 
 
 # purchase_recordsテーブル
@@ -108,5 +110,5 @@ Things you may want to cover:
 | tag                 | references  | null: false, foreign_key: true  |
 
 ### Association
-  has_many :product_tag_relations
-  has_many :tags, through: :product_tag_relations
+  belongs_to :product
+  belongs_to :tag
