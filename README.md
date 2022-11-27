@@ -88,3 +88,25 @@ Things you may want to cover:
 
 ### Association
   belongs_to :purchase_record
+
+
+# tagテーブル
+
+| Column              | Type        | Options                         |
+|---------------------|-------------|---------------------------------|
+| tag_name            | string      | null: false, uniqueness: true   |
+
+### Association
+  has_many :product_tag_relations
+  has_many :products, through: :product_tag_relations
+
+# product_tag_relationテーブル
+
+| Column              | Type        | Options                         |
+|---------------------|-------------|---------------------------------|
+| product             | references  | null: false, foreign_key: true  |
+| tag                 | references  | null: false, foreign_key: true  |
+
+### Association
+  has_many :product_tag_relations
+  has_many :tags, through: :product_tag_relations
