@@ -48,8 +48,8 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
   adapter: mysql2
+  encoding: utf8
   database: furima_38186_production
   username: root
   password: <%= ENV['DATABASE_PASSWORD'] %>
