@@ -50,7 +50,7 @@ test:
 production:
   adapter: mysql2
   encoding: utf8
-  database: furima-38186_production
+  database: furima_38186_production
   username: root
   password: <%= ENV['DATABASE_PASSWORD'] %>
   socket: /var/lib/mysql/mysql.sock
