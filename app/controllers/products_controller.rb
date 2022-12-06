@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
   before_action :move_to_session, except: [:index, :show]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :move_to_top, only: :edit
+  before_action :search
 
   def index
     @products = Product.all.order('created_at DESC')
@@ -45,6 +46,11 @@ class ProductsController < ApplicationController
       @product.destroy
       redirect_to root_path
     end
+  end
+
+  def search
+    @q = Product.ransack(params[:q])
+    @products = @q.result.order('created_at DESC')
   end
 
   private

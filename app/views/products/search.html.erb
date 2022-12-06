@@ -1,0 +1,47 @@
+<%= render "/shared/header" %>
+<div class='main'>
+  <div class='item-contents'>
+    <h2 class='title'>ピックアップカテゴリー</h2>
+    <div class="subtitle" >
+      新規投稿商品
+    </div>
+    <ul class='item-lists'>
+      <% @products.each do |product| %>
+      <li class='list'>
+        <%= link_to product_path(product.id), method: :get do %>
+        <div class='item-img-content'>
+          <%= image_tag product.image, class: "item-img" %>
+          <% if PurchaseRecord.exists?(product_id: product.id) %>
+          <div class='sold-out'>
+            <span>Sold Out!!</span>
+          </div>
+          <% end %>
+        </div>
+        <div class='item-info'>
+          <h3 class='item-name'>
+            <%= product.name %>
+          </h3>
+          <div class='item-price'>
+            <span><%= product.price %>円<br><%= product.postage[:name] %></span>
+            <div class='star-btn'>
+              <%= image_tag "star.png", class:"star-icon" %>
+              <span class='star-count'>0</span>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </li>
+      <% end %>
+      <% if @products.empty? %>
+        <h1 class='search-message'>
+          キーワードを含む商品が見つかりませんでした。
+        </h1>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<%= link_to(new_product_path, class: 'purchase-btn') do %>
+  <span class='purchase-btn-text'>出品する</span>
+  <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
+<% end %>
+<%= render "shared/footer" %>
