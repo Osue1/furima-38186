@@ -308,8 +308,10 @@ a {
   font-size: 2vh;
 }
 
-/* //商品一覧 */
-
-.hidden {
-  visibility: hidden;
+.search-message{
+  font-size: 20px;
+  margin-top: 30px;
+  border: 2px solid red;
 }
+
+/* //商品一覧 */

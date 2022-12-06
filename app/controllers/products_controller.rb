@@ -50,7 +50,7 @@ class ProductsController < ApplicationController
 
   def search
     @q = Product.ransack(params[:q])
-    @products = @q.result
+    @products = @q.result.order('created_at DESC')
   end
 
   private
