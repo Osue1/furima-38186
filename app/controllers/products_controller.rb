@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :move_to_session, except: [:index, :show]
+  before_action :move_to_session, except: [:index, :show, :search]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :move_to_top, only: :edit
   before_action :search
