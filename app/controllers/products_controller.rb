@@ -15,7 +15,7 @@ class ProductsController < ApplicationController
   def create
     @product_form = ProductForm.new(product_form_params)
     if @product_form.valid?
-      @product.save
+      @product_form.save
       redirect_to root_path
     else
       render :new

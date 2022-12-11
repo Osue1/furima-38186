@@ -8,7 +8,9 @@ ja:
         first_name: お名前(名)
         last_name_reading: お名前カナ(姓)
         first_name_reading: お名前カナ(名)
-      product:
+  activemodel:
+    attributes:
+      product_form:
         image: 商品画像
         name: 商品名
         explanation: 商品の説明
